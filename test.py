@@ -1,5 +1,6 @@
 import requests
-url = 'http://localhost:8080/predict'
+# url = 'http://localhost:8080/predict'
+url = "http://34.173.137.46:8080/predict"
 data = {'url':"https://storage.googleapis.com/kagglesdsdata/datasets/130737/312053/Mushrooms/Agaricus/000_ePQknW8cTp8.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=databundle-worker-v2%40kaggle-161607.iam.gserviceaccount.com%2F20240114%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240114T064011Z&X-Goog-Expires=345600&X-Goog-SignedHeaders=host&X-Goog-Signature=94a4601728f8e148cfca1da40a28ee0f6c83c5226a2d2ad0a6ad1a1a27efface3b11b8b61c69f13aa70c6033157c49b343f63460c85ef78aa7b3750d7bdaef6160a9ac326d0bdeb6b6b728c145a43a0a96c9a9afd34d591a29bceb615dd53d2b5134ac9de19a5dc3561427ad3043477c17eb2e35f663b47762be71696b0fc2c79bfbea6c709aede7d4bab5ab705e8ab6ee925a4f4fa7056dd9b03a0ab04ddeaf7cb09c2beccecc022030a6b8bd122b704ca83dfc021fb6d86f8167eff25919fafb6874388c233d196cc0cd4a45db9c80d2a4b13c81ac1fcf1c73adc8c25de564a6722dafa3add59b772c5226c768d13be61fcbb14e29194b98227c156f88f57a"}
 response = requests.post(url,json=data).json()
 print(response)

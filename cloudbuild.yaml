@@ -1,8 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/mushroom-classification-model:efficientnet-v3-001', '-f', 'image-model.dockerfile', '.']
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'mushroom-classification-model:efficientnet-v3-001', '--image', 'gcr.io/$PROJECT_ID/mushroom-classification-model:efficientnet-v3-001', '--region', 'us-central1']
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-model:efficientnet-v3-001', '-f', 'image-model.dockerfile', '.' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-gateway:001', '-f', 'image-gateway.dockerfile', '.' ]
+
 images:
-- 'gcr.io/$PROJECT_ID/mushroom-classification-model:efficientnet-v3-001'
+- 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-model:efficientnet-v3-001'
+- 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-gateway:001'
