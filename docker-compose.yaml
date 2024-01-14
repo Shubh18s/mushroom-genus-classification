@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  mushroom-model:
+    image: mushroom-classification-model:efficientnet-v3-001
+  gateway:
+    image: mushroom-classification-gateway:001
+    environment:
+      - TF_SERVING_HOST=mushroom-model:8500
+    ports:
+      - "9696:9696"

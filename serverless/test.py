@@ -1,0 +1,5 @@
+import requests
+url = 'http://0.0.0.0:8080/2023-12-27/functions/function/invocations/'
+data = {'url':"https://storage.googleapis.com/kagglesdsdata/datasets/130737/312053/Mushrooms/Agaricus/000_ePQknW8cTp8.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=databundle-worker-v2%40kaggle-161607.iam.gserviceaccount.com%2F20231227%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20231227T045019Z&X-Goog-Expires=345600&X-Goog-SignedHeaders=host&X-Goog-Signature=052703779ba0667a05b223fbd60d05639587e61f710f1a9778334d0c865d5a4d01d453e327f698dbb1b50f9df39b74de3c31aae869a281ababfa094c2f0a7226304aa4bcd450c50f8c59d5adcde7168c9bcda63d11b4517abc765abbc4ec2d3b4ba1d219065f4921b57b32cd95ce733fd0d27670793ef95e2591de8308df712a6d385da8c995c2e7aa353c7c1a78f4eb5a995865ae2e1fb5efa46f10dcd56abd5295dd22c344c58ee052cb775a7fa7d7319b9b2797eede84f201a9e68b12208e74a0c0cc94f3af737f0900e5301859e205c2b1cc4f4f855a5e4c6744a70428555a64384ed77c69b90422901c1911cdafc90937dccf97941cfdfd6ec74b45f987"}
+response = requests.post(url,json=data).json()
+print(response)

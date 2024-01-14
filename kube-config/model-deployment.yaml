@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf-serving-mushroom-model
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tf-serving-mushroom-model
+  template:
+    metadata:
+      labels:
+        app: tf-serving-mushroom-model
+    spec:
+      containers:
+      - name: tf-serving-mushroom-model
+        image:  mushroom-classification-model:efficientnet-v3-001
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+        ports:
+        - containerPort: 8500
