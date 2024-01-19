@@ -16,3 +16,37 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 - Initial model training and experimentation was done using smaller images (150x150), followed by the larger model training using 299x299 images.
 - The architectures I used for the task include Xception (66% accuracy), ResNet50v2 (64% accuracy), InceptionV3 (64% accuracy) and finally EfficientNetV2 (87% accuracy).
 - The final model (which I also published on Kaggle for those of you curious) performed quite well on test dataset with an accuracy of 85%.
+
+
+# Deployment
+
+
+## Local
+
+## Cloud
+
+1. Install [a https://cloud.google.com/sdk/docs/install#deb](Google Cloud CLI) installed AND gke-gcloud-auth-plugin 
+
+### Cloud build Setup & Commands
+
+    1. `gcloud config get-value project`
+
+	2. Create a new repository in Artifact Registry using below command - 
+    `gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
+
+    3. Build images using cloud build using below cloud - 
+    `gcloud builds submit --config=cloudbuild.yaml .`
+
+    4. Create Cluster 
+    `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
+
+    5. `kubectl apply -f kube-config-gke/model-deployment.yaml`
+	6. `kubectl apply -f kube-config-gke/model-service.yaml`
+	7. `kubectl apply -f kube-config-gke/gateway-deployment.yaml`
+    8. `kubectl apply -f kube-config-gke/gateway-service.yaml`
+
+    9. To check current deployments use - 
+    `kubectl get deployments`
+
+    10. If the 	Error: ImagePullBackOff error occurs, use below command - 
+    gcloud artifacts repositories add-iam-policy-binding mushroom-classification-repo --location={REGION} --member=serviceAccount:self-managed-svc-account@{PROJECT_ID}.iam.gserviceaccount.com --role="roles/artifactregistry.reader"
