@@ -25,9 +25,9 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 ## Cloud
 
-1. Install [a https://cloud.google.com/sdk/docs/install#deb](Google Cloud CLI) installed AND gke-gcloud-auth-plugin 
+1. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [gke-gcloud-auth-plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
 
-### Cloud build Setup & Commands
+### Cloud build Setup
 
     1. `gcloud config get-value project`
 
@@ -37,16 +37,17 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
     3. Build images using cloud build using below cloud - 
     `gcloud builds submit --config=cloudbuild.yaml .`
 
-    4. Create Cluster 
+### Deploying to Google Kubernetes Engine
+    1. Create Cluster 
     `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
 
-    5. `kubectl apply -f kube-config-gke/model-deployment.yaml`
-	6. `kubectl apply -f kube-config-gke/model-service.yaml`
-	7. `kubectl apply -f kube-config-gke/gateway-deployment.yaml`
-    8. `kubectl apply -f kube-config-gke/gateway-service.yaml`
+    2. `kubectl apply -f kube-config-gke/model-deployment.yaml`
+	3. `kubectl apply -f kube-config-gke/model-service.yaml`
+	4. `kubectl apply -f kube-config-gke/gateway-deployment.yaml`
+    5. `kubectl apply -f kube-config-gke/gateway-service.yaml`
 
-    9. To check current deployments use - 
+    6. To check current deployments use - 
     `kubectl get deployments`
 
-    10. If the 	Error: ImagePullBackOff error occurs, use below command - 
+    Note - If the Error: ImagePullBackOff error occurs, use below command to create iam-policy-binding to artifact registry repo - 
     gcloud artifacts repositories add-iam-policy-binding mushroom-classification-repo --location={REGION} --member=serviceAccount:self-managed-svc-account@{PROJECT_ID}.iam.gserviceaccount.com --role="roles/artifactregistry.reader"
