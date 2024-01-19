@@ -25,7 +25,16 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 ## Cloud
 
-1. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [gke-gcloud-auth-plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
+1. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [GKE GCloud Auth Plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
+
+2. Make sure to use the service account with below roles
+    - Artifact Registry Admin
+    - Cloud Build Editor
+    - Create Service Accounts
+    - Kubernetes Engine Admin
+    - Service Account User
+    - Service Usage Admin
+    - Storage Admin
 
 ### Cloud build Setup
 
