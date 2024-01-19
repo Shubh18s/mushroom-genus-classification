@@ -40,10 +40,10 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
     1. `gcloud config get-value project`
 
-	2. Create a new repository in Artifact Registry using below command - 
+	2. Create a new repository in Artifact Registry - 
     `gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
 
-    3. Build images using cloud build using below cloud - 
+    3. Build and push images to Artifact Registry - 
     `gcloud builds submit --config=cloudbuild.yaml .`
 
 ### Deploying to Google Kubernetes Engine
