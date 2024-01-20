@@ -47,12 +47,11 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 - The convolutional layers and their corresponding weights are similar to the ImageNet (https://image-net.org/), the most common and benchmark dataset for common objects.
 - The dense layers have been designed specifically to classify mushroom images into 9 distinct classes - 'Agaricus', 'Amanita', 'Boletus', 'Cortinarius', 'Entoloma', 'Hygrocybe', 'Lactarius', 'Russula' and 'Suillus'.
 - Initial model training and experimentation was done using smaller images (150x150), followed by the larger model training using 299x299 images.
-- The architectures I used for the task include Xception (66% accuracy), ResNet50v2 (64% accuracy), InceptionV3 (64% accuracy) and finally EfficientNetV2 (87% accuracy).
-- The final model (which I also published on Kaggle for those of you curious) performed quite well on test dataset with an accuracy of 85%.
+- The architectures I used for the task include Xception (66% accuracy), ResNet50v2 (64% accuracy), InceptionV3 (64% accuracy) and finally EfficientNetV2 (88% accuracy).
+- The final model was the EfficientNetV2 with the highest accuracy (88%) on test dataset and was used for deployment.
 
 
 # Deployment - Tensorflow Serving with Kubernetes
-
 
 ## Local
 
@@ -66,6 +65,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
     `kubectl apply -f kube-config-local`
 
 ## Cloud
+
+Cloud deployment makes use of Google Cloud services including - Google Kubernetes Engine (GKE), Cloud Build, Artifact Registry and Cloud Storage.
 
 1. Create a service account with below roles
     - Artifact Registry Admin
