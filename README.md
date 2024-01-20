@@ -1,6 +1,9 @@
 # Mushroom Genus Classification
 Machine learning project to classify mushroom images into 9 distinct genus classes.
 
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/mushroom_classification_image_bing_generated.jpg)
+
+
 # Task
 With over 14000 mushroom species on earth from varying biological families/Genuses, classifying mushrooms is not an easy feat, especially when it depends on so many factors including shape, size, texture and whether they produce mushroom fruit bodies or not. You can read more about classifying mushrooms here - https://en.wikipedia.org/wiki/Mushroom#Classification
 
