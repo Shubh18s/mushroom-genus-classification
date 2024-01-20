@@ -53,6 +53,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 # Deployment - Tensorflow Serving with Kubernetes
 
+gRPC and Protobuf and TF-serving
+
 ## Local
 
 1. Install Kubectl and Kind
@@ -66,7 +68,7 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 ## Cloud
 
-Cloud deployment makes use of Google Cloud services including - Google Kubernetes Engine (GKE), Cloud Build, Artifact Registry and Cloud Storage.
+Cloud deployment makes use of Google Cloud services including - [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/?utm_source=bing&utm_medium=cpc&utm_campaign=japac-AU-all-en-dr-BKWS-all-super-trial-PHR-dr-1605216&utm_content=text-ad-none-none-DEV_c-CRE_-ADGP_Hybrid+%7C+BKWS+-+PHR+%7C+Txt+~+Containers_Kubernetes+Engine_google+kubernetes_main-KWID_43700079238685177-kwd-71606489890140:loc-9&userloc_122876-network_o&utm_term=KW_google+kubernetes+engine&gclsrc=3p.ds&&gclid=d2a059b180b9139664243c1a5309bd4f&gclsrc=3p.ds&&hl=en), [Google Cloud Build](https://cloud.google.com/build?hl=en), [Artifact Registry](https://cloud.google.com/artifact-registry/) and [Cloud Storage](https://cloud.google.com/storage/?hl=en).
 
 1. Create a service account with below roles
     - Artifact Registry Admin
