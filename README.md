@@ -36,7 +36,7 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
     `kind load docker-image mushroom-classification-gateway:001`
 4. Create deployment and Service -
     `kubectl apply -f kube-config-local`
-    
+
 ## Cloud
 
 1. Create a service account with below roles
@@ -69,7 +69,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 3. To check current deployments use - 
 `kubectl get deployments`
-
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/gke_deployments.png)
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/gke_deployment_test.png)
 
 # Developer
 
