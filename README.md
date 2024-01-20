@@ -16,14 +16,16 @@ The dataset contains 9 common mushroom genus' images with 300-1500 images for ea
 
 # Project Structure
 
-## Model creation and tf-lite serving
+The files in the project and roughly defined in below 3 segments
+
+### Model creation and tf-lite serving
 - [mushroom-classification.ipynb](mushroom-classification.ipynb) - Mushroom classification training notebook
 - [mushroom-classification-model.h5](mushroom-classification-model.h5) - Final model with 88% accuracy
 - [EfficientNetV2B0_v3_26_0.885.h5](EfficientNetV2B0_v3_26_0.885.h5) - Final model with 88% accuracy
 - [mushroom-classification-tf-lite.ipynb](mushroom-classification-tf-lite.ipynb) - TF-Lite notebook with lightweight packages for prediction
 - [mushroom-model.tflite](mushroom-model.tflite) - TF-Lite model
 
-## Model and gateway deployment
+### Model and gateway deployment
 - [gateway.py](gateway.py) - Flask app for gateway service
 - [image-gateway.dockerfile](image-gateway.dockerfile) - Dockerfile for gateway container
 - [image-model.dockerfile](image-model.dockerfile)- Dockerfile for model container
@@ -34,7 +36,7 @@ The dataset contains 9 common mushroom genus' images with 300-1500 images for ea
 - [kube-config-gke](kube-config-gke) - Deployment manifests for kubernetes deployment to Google Kubernetes Engine
 - [docker-compose.yaml](docker-compose.yaml) - Docker compose file for local run of gateway and model service
 
-## Other files/directories
+### Other files/directories
 - [serverless](serverless) - directory for serverless deployment not currently used.
 - [images](images) - image directory
 - [Pipfile](Pipfile) - Python dependency file
