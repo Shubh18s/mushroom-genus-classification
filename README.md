@@ -77,6 +77,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployments.png)
 
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/postman_sc.png)
+
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployment_test.png)
 
 # Developer
