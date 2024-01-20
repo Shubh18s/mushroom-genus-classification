@@ -45,6 +45,12 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 2. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [GKE GCloud Auth Plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
 
+3. Load the model and gateway images to cluster -
+    `kind load docker-image mushroom-classification-model:efficientnet-v3-001`
+    `kind load docker-image mushroom-classification-gateway:001`
+4. Create deployment and Service -
+    `kubectl apply -f kube-config-local`
+
 ### Build and Push Model and Gateway image to Artifact Registry
 
 1. Get you project id using - `gcloud config get-value project`
