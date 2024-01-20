@@ -26,6 +26,7 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 # Deployment - Tensorflow Serving with Kubernetes
 
 
+
 ## Local
 
 1. Install Kubectl and Kind
@@ -61,6 +62,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 3. Build and push images to Artifact Registry - 
 `gcloud builds submit --config=cloudbuild.yaml .`
 
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/artifact_registry_sc.png)
+
 ### Deploying to Google Kubernetes Engine
 1. Create Cluster 
 `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
@@ -69,7 +72,9 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 3. To check current deployments use - 
 `kubectl get deployments`
+
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/gke_deployments.png)
+
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/gke_deployment_test.png)
 
 # Developer
