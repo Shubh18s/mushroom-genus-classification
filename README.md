@@ -45,12 +45,11 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 2. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [GKE GCloud Auth Plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
 
-
 ### Build and Push Model and Gateway image to Artifact Registry
 
-1. `gcloud config get-value project`
+1. Get you project id using - `gcloud config get-value project`
 
-2. Create a new repository in Artifact Registry - 
+2. Create a new repository in Artifact Registry. Replace location and project parameters  - 
 `gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
 
 3. Build and push images to Artifact Registry - 
@@ -60,8 +59,12 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 1. Create Cluster 
 `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
 
-2. `kubectl apply -f kube-config-gke`
+2. Create deployments - `kubectl apply -f kube-config-gke`
 
-6. To check current deployments use - 
+3. To check current deployments use - 
 `kubectl get deployments`
 
+
+# Developer
+
+### Shubhdeep Singh (singh18shubhdeep@gmail.com)
