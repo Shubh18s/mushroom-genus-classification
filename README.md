@@ -105,7 +105,7 @@ Cloud deployment makes use of Google Cloud services including - [Google Kubernet
 4. To check current deployments use - 
 `kubectl get deployments`
 
-Currently the service is deployed at [http://34.173.137.46:80/predict](http://34.173.137.46:80/predict). Make sure to send a POST request with JSON abost containing `url` as below. Refer to postman screenshot below -
+Currently the service is deployed at [http://34.173.137.46:80/predict](http://34.173.137.46:80/predict). Make sure to send a POST request with JSON object containing `url` as below. Refer to postman screenshot below -
 
 ```
 {"url":"<REPLACE_WITH_IMAGE_LINK_FROM_KAGGLE_REPO_OR_SEND_ANOTHER_MUSHROOM_IMAGE>"}
