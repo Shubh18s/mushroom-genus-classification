@@ -1,10 +1,15 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-model:efficientnet-v3-001', '-f', 'image-model.dockerfile', '.' ]
+  args: [ 'build', '-t', '${_GCP_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_REPO}/mushroom-classification-model:efficientnet-v3-001', '-f', 'image-model.dockerfile', '.' ]
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-gateway:001', '-f', 'image-gateway.dockerfile', '.' ]
+  args: [ 'build', '-t', '${_GCP_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_REPO}/mushroom-classification-gateway:001', '-f', 'image-gateway.dockerfile', '.' ]
+
+substitutions:
+    _GCP_LOCATION: us-central1
+    _GCP_PROJECT_ID: evident-castle-409108
+    _GCP_ARTIFACT_REGISTRY_REPO: mushroom-classification-repo
 
 images:
-- 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-model:efficientnet-v3-001'
-- 'us-central1-docker.pkg.dev/$PROJECT_ID/mushroom-classification-repo/mushroom-classification-gateway:001'
+- '${_GCP_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_REPO}/mushroom-classification-model:efficientnet-v3-001'
+- '${_GCP_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_REPO}/mushroom-classification-gateway:001'
