@@ -16,6 +16,10 @@ The dataset contains 9 common mushroom genus' images with 300-1500 images for ea
 
 # Project Structure
 
+- mushroom-classification-tf-lite.ipynb - TF-Lite notebook with lightweight packages for prediction.
+- [Title](mushroom-model.tflite)
+
+
 # Modeling
 As for the modeling part, I utilized #transferlearning leveraging state-of-the-art architectures available from Keras (https://keras.io/).
 - The convolutional layers and their corresponding weights are similar to the ImageNet (https://image-net.org/), the most common and benchmark dataset for common objects.
@@ -61,8 +65,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 2. Create a new repository in Artifact Registry. Replace location and project parameters  - 
 `gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
 
-3. Build and push images to Artifact Registry - 
-`gcloud builds submit --config=cloudbuild.yaml .`
+3. Build and push images to Artifact Registry -
+    Replace Line 9 and 10 in cloudbuild.yaml with your `YOUR_REPOSITORY_REGION`, `YOUR_PROJECT_ID` and run `gcloud builds submit --config=cloudbuild.yaml .`
 
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/artifact_registry_sc.png)
 

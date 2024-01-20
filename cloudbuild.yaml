@@ -6,8 +6,8 @@ steps:
   args: [ 'build', '-t', '${_GCP_LOCATION}-docker.pkg.dev/${_GCP_PROJECT_ID}/${_GCP_ARTIFACT_REGISTRY_REPO}/mushroom-classification-gateway:001', '-f', 'image-gateway.dockerfile', '.' ]
 
 substitutions:
-    _GCP_LOCATION: us-central1
-    _GCP_PROJECT_ID: evident-castle-409108
+    _GCP_LOCATION: <YOUR_REPOSITORY_REGION>
+    _GCP_PROJECT_ID: <YOUR_PROJECT_ID>
     _GCP_ARTIFACT_REGISTRY_REPO: mushroom-classification-repo
 
 images:
