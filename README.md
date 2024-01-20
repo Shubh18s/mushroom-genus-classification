@@ -12,6 +12,8 @@ For our particular task, I set out to classify the common mushroom genus' using 
 # Data
 The dataset contains 9 common mushroom genus' images with 300-1500 images for each genus. While the final model is trained on the specific images from the dataset curated from Northern Europe, it can be translated into classifying Australian mushroom images as some of the common genus' are available here as well.
 
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/mushroom_genus_distribution.png)
+
 # Modeling
 As for the modeling part, I utilized #transferlearning leveraging state-of-the-art architectures available from Keras (https://keras.io/).
 - The convolutional layers and their corresponding weights are similar to the ImageNet (https://image-net.org/), the most common and benchmark dataset for common objects.
