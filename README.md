@@ -1,7 +1,7 @@
 # Mushroom Genus Classification
 Machine learning project to classify mushroom images into 9 distinct genus classes.
 
-![alt text](https://github.com/Shubh18s/mushroom-genus-classification/images/blob/main/mushroom_classification_image_bing_generated.jpg)
+![alt hello](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/mushroom_classification_image_bing_generated.jpg)
 
 
 # Task
@@ -12,7 +12,7 @@ For our particular task, I set out to classify the common mushroom genus' using 
 # Data
 The dataset contains 9 common mushroom genus' images with 300-1500 images for each genus. While the final model is trained on the specific images from the dataset curated from Northern Europe, it can be translated into classifying Australian mushroom images as some of the common genus' are available here as well.
 
-![alt text](https://github.com/Shubh18s/mushroom-genus-classification/images/blob/main/mushroom_genus_distribution.png)
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/mushroom_genus_distribution.png)
 
 # Project Structure
 
@@ -64,7 +64,7 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 3. Build and push images to Artifact Registry - 
 `gcloud builds submit --config=cloudbuild.yaml .`
 
-![alt text](https://github.com/Shubh18s/mushroom-genus-classification/images/blob/main/artifact_registry_sc.png)
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/artifact_registry_sc.png)
 
 ### Deploying to Google Kubernetes Engine
 1. Create Cluster 
@@ -75,9 +75,9 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 3. To check current deployments use - 
 `kubectl get deployments`
 
-![alt text](https://github.com/Shubh18s/mushroom-genus-classification/images/blob/main/gke_deployments.png)
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployments.png)
 
-![alt text](https://github.com/Shubh18s/mushroom-genus-classification/images/blob/main/gke_deployment_test.png)
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployment_test.png)
 
 # Developer
 
