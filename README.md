@@ -31,7 +31,12 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 1. Install Kubectl and Kind
 2. Create a new default cluster -
     `kind create cluster`
-
+3. Load the model and gateway images to cluster -
+    `kind load docker-image mushroom-classification-model:efficientnet-v3-001`
+    `kind load docker-image mushroom-classification-gateway:001`
+4. Create deployment and Service -
+    `kubectl apply -f kube-config-local`
+    
 ## Cloud
 
 1. Create a service account with below roles
@@ -45,11 +50,6 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 2. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [GKE GCloud Auth Plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
 
-3. Load the model and gateway images to cluster -
-    `kind load docker-image mushroom-classification-model:efficientnet-v3-001`
-    `kind load docker-image mushroom-classification-gateway:001`
-4. Create deployment and Service -
-    `kubectl apply -f kube-config-local`
 
 ### Build and Push Model and Gateway image to Artifact Registry
 
