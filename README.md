@@ -16,9 +16,29 @@ The dataset contains 9 common mushroom genus' images with 300-1500 images for ea
 
 # Project Structure
 
-- mushroom-classification-tf-lite.ipynb - TF-Lite notebook with lightweight packages for prediction.
-- [Title](mushroom-model.tflite)
+## Model creation and tf-lite serving
+- [mushroom-classification.ipynb](mushroom-classification.ipynb) - Mushroom classification training notebook
+- [mushroom-classification-model.h5](mushroom-classification-model.h5) - Final model with 88% accuracy
+- [EfficientNetV2B0_v3_26_0.885.h5](EfficientNetV2B0_v3_26_0.885.h5) - Final model with 88% accuracy
+- [mushroom-classification-tf-lite.ipynb](mushroom-classification-tf-lite.ipynb) - TF-Lite notebook with lightweight packages for prediction
+- [mushroom-model.tflite](mushroom-model.tflite) - TF-Lite model
 
+## Model and gateway deployment
+- [gateway.py](gateway.py) - Flask app for gateway service
+- [image-gateway.dockerfile](image-gateway.dockerfile) - Dockerfile for gateway container
+- [image-model.dockerfile](image-model.dockerfile)- Dockerfile for model container
+- [mushroom-model](mushroom-model) - saved model directory for mushroom classification
+- [proto.py](proto.py) - Helper file for tensor to proto conversion
+- [cloudbuild.yaml](cloudbuild.yaml) - Cloud build configuration file
+- [kube-config-local](kube-config-local) - Deployment manifests for local kubernetes deployment
+- [kube-config-gke](kube-config-gke) - Deployment manifests for kubernetes deployment to Google Kubernetes Engine
+- [docker-compose.yaml](docker-compose.yaml) - Docker compose file for local run of gateway and model service
+
+## Other files/directories
+- [serverless](serverless) - directory for serverless deployment not currently used.
+- [images](images) - image directory
+- [Pipfile](Pipfile) - Python dependency file
+- [test.py](test.py) - File to test local/cloud deployment
 
 # Modeling
 As for the modeling part, I utilized #transferlearning leveraging state-of-the-art architectures available from Keras (https://keras.io/).
@@ -30,7 +50,6 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 
 # Deployment - Tensorflow Serving with Kubernetes
-
 
 
 ## Local
@@ -66,7 +85,7 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 `gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
 
 3. Build and push images to Artifact Registry -
-    Replace Line 9 and 10 in cloudbuild.yaml with your `YOUR_REPOSITORY_REGION`, `YOUR_PROJECT_ID` and run `gcloud builds submit --config=cloudbuild.yaml .`
+    Replace Line 9 and 10 in [cloudbuild.yaml](cloudbuild.yaml) with your `YOUR_REPOSITORY_REGION`, `YOUR_PROJECT_ID` and run `gcloud builds submit --config=cloudbuild.yaml .`
 
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/artifact_registry_sc.png)
 
@@ -74,16 +93,18 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 1. Create Cluster 
 `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
 
-2. Create deployments - `kubectl apply -f kube-config-gke`
+2. Replace `YOUR_REPOSITORY_REGION` and `YOUR_PROJECT_ID` project parameters in [gateway-deployment.yaml](kube-config-gke/gateway-deployment.yaml) and [model-deployment.yaml](kube-config-gke/model-deployment.yaml)
 
-3. To check current deployments use - 
+3. Run - `kubectl apply -f kube-config-gke`
+
+4. To check current deployments use - 
 `kubectl get deployments`
 
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployments.png)
 
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/postman_sc.png)
 
-![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployment_test.png)
+<!-- ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/gke_deployment_test.png) -->
 
 # Developer
 

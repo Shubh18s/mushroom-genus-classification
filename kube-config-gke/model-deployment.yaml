@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: tf-serving-mushroom-model
-        image:  us-central1-docker.pkg.dev/evident-castle-409108/mushroom-classification-repo/mushroom-classification-model:efficientnet-v3-001
+        image:  <YOUR_REPOSITORY_REGION>-docker.pkg.dev/<YOUR_PROJECT_ID>/mushroom-classification-repo/mushroom-classification-model:efficientnet-v3-001
         resources:
           limits:
             memory: "512Mi"

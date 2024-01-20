@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gateway
-        image:  us-central1-docker.pkg.dev/evident-castle-409108/mushroom-classification-repo/mushroom-classification-gateway:001
+        image:  <YOUR_REPOSITORY_REGION>-docker.pkg.dev/<YOUR_PROJECT_ID>/mushroom-classification-repo/mushroom-classification-gateway:001
         resources:
           limits:
             memory: "256Mi"
