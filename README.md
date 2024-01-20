@@ -1,4 +1,4 @@
-# mushroom-genus-classification
+# Mushroom Genus Classification
 Machine learning project to classify mushroom images into 9 distinct genus classes.
 
 # Task
@@ -22,6 +22,10 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 
 ## Local
+
+1. Install Kubectl and Kind
+2. Create a new default cluster -
+    `kind create cluster`
 
 ## Cloud
 
@@ -51,13 +55,8 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 1. Create Cluster 
 `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
 
-2. `kubectl apply -f kube-config-gke/model-deployment.yaml`
-3. `kubectl apply -f kube-config-gke/model-service.yaml`
-4. `kubectl apply -f kube-config-gke/gateway-deployment.yaml`
-5. `kubectl apply -f kube-config-gke/gateway-service.yaml`
+2. `kubectl apply -f kube-config-gke`
 
 6. To check current deployments use - 
 `kubectl get deployments`
 
-Note - If the Error: ImagePullBackOff error occurs, use below command to create iam-policy-binding to artifact registry repo - 
-gcloud artifacts repositories add-iam-policy-binding mushroom-classification-repo --location={REGION} --member=serviceAccount:self-managed-svc-account@{PROJECT_ID}.iam.gserviceaccount.com --role="roles/artifactregistry.reader"
