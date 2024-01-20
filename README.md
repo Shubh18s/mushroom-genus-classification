@@ -18,16 +18,14 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 - The final model (which I also published on Kaggle for those of you curious) performed quite well on test dataset with an accuracy of 85%.
 
 
-# Deployment
+# Deployment - Tensorflow Serving with Kubernetes
 
 
 ## Local
 
 ## Cloud
 
-1. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [GKE GCloud Auth Plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
-
-2. Make sure to use the service account with below roles
+1. Create a service account with below roles
     - Artifact Registry Admin
     - Cloud Build Editor
     - Create Service Accounts
@@ -36,27 +34,30 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
     - Service Usage Admin
     - Storage Admin
 
-### Cloud build Setup
+2. Install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install#deb) and [GKE GCloud Auth Plugin](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
 
-    1. `gcloud config get-value project`
 
-	2. Create a new repository in Artifact Registry - 
-    `gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
+### Build and Push Model and Gateway image to Artifact Registry
 
-    3. Build and push images to Artifact Registry - 
-    `gcloud builds submit --config=cloudbuild.yaml .`
+1. `gcloud config get-value project`
+
+2. Create a new repository in Artifact Registry - 
+`gcloud artifacts repositories create mushroom-classification-repo --project={PROJECT_ID} --repository-format=docker --location={REGION} --description="Docker repository"`
+
+3. Build and push images to Artifact Registry - 
+`gcloud builds submit --config=cloudbuild.yaml .`
 
 ### Deploying to Google Kubernetes Engine
-    1. Create Cluster 
-    `gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
+1. Create Cluster 
+`gcloud container clusters create-auto mushroom-classification-gke --location {REGION}`
 
-    2. `kubectl apply -f kube-config-gke/model-deployment.yaml`
-	3. `kubectl apply -f kube-config-gke/model-service.yaml`
-	4. `kubectl apply -f kube-config-gke/gateway-deployment.yaml`
-    5. `kubectl apply -f kube-config-gke/gateway-service.yaml`
+2. `kubectl apply -f kube-config-gke/model-deployment.yaml`
+3. `kubectl apply -f kube-config-gke/model-service.yaml`
+4. `kubectl apply -f kube-config-gke/gateway-deployment.yaml`
+5. `kubectl apply -f kube-config-gke/gateway-service.yaml`
 
-    6. To check current deployments use - 
-    `kubectl get deployments`
+6. To check current deployments use - 
+`kubectl get deployments`
 
-    Note - If the Error: ImagePullBackOff error occurs, use below command to create iam-policy-binding to artifact registry repo - 
-    gcloud artifacts repositories add-iam-policy-binding mushroom-classification-repo --location={REGION} --member=serviceAccount:self-managed-svc-account@{PROJECT_ID}.iam.gserviceaccount.com --role="roles/artifactregistry.reader"
+Note - If the Error: ImagePullBackOff error occurs, use below command to create iam-policy-binding to artifact registry repo - 
+gcloud artifacts repositories add-iam-policy-binding mushroom-classification-repo --location={REGION} --member=serviceAccount:self-managed-svc-account@{PROJECT_ID}.iam.gserviceaccount.com --role="roles/artifactregistry.reader"
