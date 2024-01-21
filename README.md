@@ -50,16 +50,25 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 - The architectures I used for the task include Xception (66% accuracy), ResNet50v2 (64% accuracy), InceptionV3 (64% accuracy) and finally EfficientNetV2 (88% accuracy).
 - The final model was the EfficientNetV2 with the highest accuracy (88%) on test dataset and was used for deployment.
 
-
-# Deployment - Tensorflow Serving with Kubernetes
-
 ## Architecture
 
 ![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/mushroom_classification_architecture.jpg)
 
-Kubernetes cluster with 2 pods - one for gateway deployment and the other for TF-serving model deployment was used for our usecase. The 
+Kubernetes cluster with 2 services - one for gateway deployment and the other for model deployment was used for this usecase. 
 
-gRPC and Protobuf and TF-serving
+Gateway service -
+- Downloads the image from URL/Path provided.
+- Preprocesses image
+- Converts tensor to protobuf format
+- Prepares and sends gRPC request to model service
+- Prepares response with respective likelihood of each mushroom genus class
+- Returns JSON response to user
+
+Model service - 
+- Applies the model to each incoming request
+- Send the response back with 9 numbers representing the probability of each genus class
+
+# Deployment - Tensorflow Serving with Kubernetes
 
 ## Local
 
