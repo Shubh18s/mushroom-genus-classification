@@ -126,5 +126,5 @@ Currently the service is deployed at [http://34.173.137.46:80/predict](http://34
 # Developer
 
 ### Shubhdeep Singh 
-#### [Email](singh18shubhdeep@gmail.com)
+#### [Email](mailto@singh18shubhdeep@gmail.com)
 #### [LinkedIn](https://www.linkedin.com/in/shubh18s/)
