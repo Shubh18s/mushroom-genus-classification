@@ -7,6 +7,8 @@ Machine learning project to classify mushroom images into 9 distinct genus class
 # Task
 With over 14000 mushroom species on earth from varying biological families/Genuses, classifying mushrooms is not an easy feat, especially when it depends on so many factors including shape, size, texture and whether they produce mushroom fruit bodies or not. You can read more about classifying mushrooms here - https://en.wikipedia.org/wiki/Mushroom#Classification
 
+With mushrooms constituting a vital part of cuisines around the world and the ones growing in the wild being potentially poisonous, it is extremely important to have a way to know whether a mushroom is safe to eat or not. This project is intended to be a stepping stone towards that goal and sets the first step in finding out the genus of a mushroom from the image data.
+
 For our particular task, I set out to classify the common mushroom genus' using the image dataset available on Kaggle - https://www.kaggle.com/datasets/maysee/mushrooms-classification-common-genuss-images
 
 # Data
