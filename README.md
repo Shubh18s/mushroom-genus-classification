@@ -53,6 +53,12 @@ As for the modeling part, I utilized #transferlearning leveraging state-of-the-a
 
 # Deployment - Tensorflow Serving with Kubernetes
 
+## Architecture
+
+![alt text](https://github.com/Shubh18s/mushroom-genus-classification/blob/main/images/mushroom_classification_architecture.jpeg)
+
+Kubernetes cluster with 2 pods - one for gateway deployment and the other for TF-serving model deployment was used for our usecase. The 
+
 gRPC and Protobuf and TF-serving
 
 ## Local
